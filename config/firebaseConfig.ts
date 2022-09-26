@@ -1,12 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
+console.log(process.env)
+
 /**
  * Main firebase app instance
  */
-const firebaseApp = initializeApp(
-  JSON.parse(JSON.stringify(process.env.NEXT_PUBLIC_FIREBASE_CONFIG))
-);
+//@ts-ignore
+const firebaseApp = initializeApp(JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG));
 
 /**
  * Main firestore instance

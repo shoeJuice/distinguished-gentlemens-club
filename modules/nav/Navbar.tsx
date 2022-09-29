@@ -8,12 +8,14 @@ import { NavLink } from "./NavLink";
  *
  **/
 export const Navbar = () => {
-    return (<Flex data-testid="navbar">
-        <Logo />
-        <HStack>
-            <NavLink to="Home" />
-            <NavLink to="About" />
-            <NavLink to="Contact" />
-        </HStack>
-    </Flex>);
+  return (
+    <Flex width="100%" data-testid="navbar" color="white" backgroundColor="blackAlpha.900" justifyContent="space-between" padding={4}>
+      <Logo />
+      <HStack>
+        <NavLink to="Home" />
+        <NavLink to="About" />
+        <NavLink to="Contact" />
+      </HStack>
+    </Flex>
+  );
 };

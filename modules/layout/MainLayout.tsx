@@ -8,9 +8,9 @@ import { Navbar } from "../nav/Navbar";
  */
 export const MainLayout = ({ children }: any) => {
   return (
-    <Box>
+    <Box minHeight="100vh" width="100%">
       <Navbar />
-      <Container maxW="container.xl" p={0}>
+      <Container maxW="100%" p={0}>
         {children}
       </Container>
     </Box>

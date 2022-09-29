@@ -5,11 +5,10 @@ import { useRouter } from "next/router";
 /**
  * Render a Navigation Link
  **/
-
 export const NavLink = ({ to }: any) => {
   return (
-    <NextLink href={`/${to.toLowerCase()}`} passHref>
-      <Button>{to}</Button>
+    <NextLink href={to.toLowerCase() === "home" ? "./" : `/${to.toLowerCase()}`} passHref>
+      <Button variant="unstyled">{to}</Button>
     </NextLink>
   );
 };

@@ -9,7 +9,7 @@ import { NavLink } from "./NavLink";
  **/
 export const Navbar = () => {
   return (
-    <Flex width="100%" data-testid="navbar" color="white" backgroundColor="blackAlpha.900" justifyContent="space-between" padding={4}>
+    <Flex width="100%" data-testid="navbar" color="white" backgroundColor="blackAlpha.200" justifyContent="space-between" padding={4}>
       <Logo />
       <HStack>
         <NavLink to="Home" />

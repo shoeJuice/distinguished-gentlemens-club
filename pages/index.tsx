@@ -5,6 +5,8 @@ import { Box, Container, Text, Button, Flex, Image } from "@chakra-ui/react";
 
 import { FeaturedGuest } from "../modules/widgets/FeaturedGuest";
 import { UpcomingEvents } from "../modules/widgets/UpcomingEvents";
+import { FeaturedBook } from "../modules/widgets/FeaturedBook";
+import { NewsArticle } from "../modules/widgets/NewsArticle";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -36,13 +38,18 @@ const Home: NextPage = () => {
             onClick={() => {
               router.push("/about");
             }}
+            colorScheme="red"
           >
             Learn More
           </Button>
         </Flex>
-        <Flex width="100%" gap={10} justifyContent="space-between">
+        <Flex width="100%" gap={2} padding={10} flexDirection={["column", "column", "row", "row"]} justifyContent="space-evenly">
           <FeaturedGuest />
           <UpcomingEvents />
+        </Flex>
+        <Flex width="100%" gap={2} padding={10} flexDirection={["column", "column", "row", "row"]} justifyContent="space-evenly">
+          <FeaturedBook />
+          <NewsArticle />
         </Flex>
       </Box>
     </div>

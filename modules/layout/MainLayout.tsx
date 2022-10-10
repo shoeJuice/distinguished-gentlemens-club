@@ -1,5 +1,6 @@
 import { Container, Box, Flex } from "@chakra-ui/react";
 import { Navbar } from "../nav/Navbar";
+import { Footer } from "./Footer";
 
 /**
  * Main Layout Component
@@ -13,6 +14,7 @@ export const MainLayout = ({ children }: any) => {
       <Container maxW="100%" color="white" p={0}>
         {children}
       </Container>
+      <Footer />
     </Box>
   );
 };

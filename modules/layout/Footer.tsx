@@ -5,7 +5,11 @@ import { Box, Text, Link, Flex, useColorModeValue } from "@chakra-ui/react";
  **/
 export const Footer = () => {
   return (
-    <Box>
+    <Box 
+      width="100%"
+      backgroundColor="red.400"
+      mt={10}
+    >
       <Text>Footer Goes Here</Text>
     </Box>
   );

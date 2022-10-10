@@ -1,7 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Box, Container, Text, Button, Flex, Image } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Text,
+  Button,
+  Flex,
+  Image,
+  Grid,
+} from "@chakra-ui/react";
 
 import { FeaturedGuest } from "../modules/widgets/FeaturedGuest";
 import { UpcomingEvents } from "../modules/widgets/UpcomingEvents";
@@ -25,7 +33,7 @@ const Home: NextPage = () => {
         <Flex
           id="splashSection"
           as="section"
-          height="100vh"
+          height="80vh"
           alignItems="center"
           justifyContent="center"
           flexDirection="column"
@@ -43,14 +51,22 @@ const Home: NextPage = () => {
             Learn More
           </Button>
         </Flex>
-        <Flex width="100%" gap={2} padding={10} flexDirection={["column", "column", "row", "row"]} justifyContent="space-evenly">
+        <Grid
+          templateAreas={[`"events events" "guest guest"
+                              "news news" "book book"`, `"guest book"
+                              "news events"`,]}
+          width="90%"
+          margin="auto"
+          gap={["2", "4"]}
+          gridTemplateRows={['', '1fr 1fr']}
+          gridTemplateColumns={'1fr .5fr'}
+        >
           <FeaturedGuest />
           <UpcomingEvents />
-        </Flex>
-        <Flex width="100%" gap={2} padding={10} flexDirection={["column", "column", "row", "row"]} justifyContent="space-evenly">
-          <FeaturedBook />
+
           <NewsArticle />
-        </Flex>
+          <FeaturedBook />
+        </Grid>
       </Box>
     </div>
   );

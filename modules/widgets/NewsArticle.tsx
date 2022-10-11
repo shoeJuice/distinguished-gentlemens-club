@@ -24,7 +24,7 @@ export const NewsArticle = () => {
         <Text fontSize="4xl">News Article</Text>
         <Flex
           alignItems="flex-start"
-          flexDirection={["column", "row"]}
+          flexDirection={"column"}
           justifyContent="flex-start"
           gap={4}
         >
@@ -32,8 +32,8 @@ export const NewsArticle = () => {
             src="./images/news-placeholder.jpg"
             alignSelf="center"
             borderRadius={8}
-            height={["70%", "40%"]}
-            width={["70%", "40%"]}
+            height={["70%", "60%"]}
+            width={["70%", "60%"]}
           />
           <Box>
             <Text fontSize="3xl">Title</Text>

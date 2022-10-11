@@ -53,17 +53,16 @@ const Home: NextPage = () => {
         </Flex>
         <Grid
           templateAreas={[`"events events" "guest guest"
-                              "news news" "book book"`, `"guest book"
+                              "news news" "book book"`,  `"guest book"
                               "news events"`,]}
           width="90%"
           margin="auto"
-          gap={["2", "4"]}
-          gridTemplateRows={['', '1fr 1fr']}
-          gridTemplateColumns={'1fr .5fr'}
+          gap={["2", "3"]}
+          gridTemplateRows={['', 'min-content min-content']}
+          gridTemplateColumns={'auto-fit .5fr'}
         >
           <FeaturedGuest />
           <UpcomingEvents />
-
           <NewsArticle />
           <FeaturedBook />
         </Grid>

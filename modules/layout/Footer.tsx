@@ -7,10 +7,13 @@ export const Footer = () => {
   return (
     <Box 
       width="100%"
-      backgroundColor="red.400"
+      backgroundColor="blackAlpha.400"
       mt={10}
+      padding={4}
+      textAlign="center"
     >
-      <Text>Footer Goes Here</Text>
+      <Text fontWeight="light">Distinguished Gentlemen, 2022</Text>
+      <Text fontWeight="light">Fairfield University</Text>
     </Box>
   );
 };

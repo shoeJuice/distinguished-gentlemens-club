@@ -16,7 +16,7 @@ export const FeaturedGuest = () => {
   return (
     <GridItem area={'guest'}>
       <Box
-        
+        height="100%"
         id="featuredGuest"
         backgroundColor="gray.500"
         color="white"
@@ -30,6 +30,7 @@ export const FeaturedGuest = () => {
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
+          margin="auto"
         >
           <Flex alignItems="center" flexDirection={["column", "row"]}>
             <Image
@@ -43,6 +44,14 @@ export const FeaturedGuest = () => {
               <Text fontSize="3xl" paddingY={3} textAlign="left">
                 {""}
                 Name Goes Here{" "}
+              </Text>
+              <Text paddingY={2} lineHeight="7">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Officiis totam laudantium modi minima sequi quae possimus. Animi
+                veritatis quis asperiores molestias, nisi eos aspernatur dolor
+                unde, fuga, eum laborum alias? Lorem, ipsum dolor sit amet
+                consectetur adipisicing elit. Atque, nobis modi! Voluptates
+                nobis minus tenetur odit!
               </Text>
               <Text paddingY={2} lineHeight="7">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.

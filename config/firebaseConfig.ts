@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-console.log(process.env)
 
 /**
  * Main firebase app instance

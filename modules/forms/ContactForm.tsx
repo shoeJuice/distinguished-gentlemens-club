@@ -7,8 +7,12 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Textarea,
+  Text,
+  Button,
+  VStack
 } from "@chakra-ui/react";
-import { FormMethods } from "./utils";
+import { submitContactForm } from "./functions";
 
 /**
  * Render a Contact Form
@@ -16,17 +20,127 @@ import { FormMethods } from "./utils";
 
 // TODO: Decide between importing submit handler from a separate file for mocking or include it within React component
 
+export const ContactForm = ({ onSubmit }: any) => {
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  const [hasText, setHasText] = useState<boolean>(false);
 
-export const ContactForm = ({onSubmit} : any) => {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const firstNameRef = useRef<HTMLInputElement>(null);
+  const lastNameRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const telephoneRef = useRef<HTMLInputElement>(null);
 
-    FormMethods.handleSubmit = () => {
-        console.log("Submitting form");
+  useEffect(() => {
+    if (messageRef.current) {
+      messageRef.current.maxLength = 500;
+      messageRef.current.addEventListener("input", () => {
+        if (messageRef.current) {
+          setMessage(messageRef.current.value);
+        }
+      });
     }
+  }, []);
 
-    return (<Box>
+  return !formSubmitted ? (
+    <Box paddingY={8}>
+      <VStack alignItems="flex-start">
         <FormControl>
-            <FormLabel htmlFor="email">Email address</FormLabel>
-            <Input type="email" id="email" aria-describedby="email-helper-text" />
+          <FormLabel htmlFor="email">First Name</FormLabel>
+          <Input
+            type="text"
+            id="first-name"
+            ref={firstNameRef}
+            aria-describedby="first-name-helper-text"
+          />
         </FormControl>
-    </Box>);
-}
+        <FormControl>
+          <FormLabel htmlFor="email">Last Name</FormLabel>
+          <Input
+            type="text"
+            id="last-name"
+            ref={lastNameRef}
+            aria-describedby="last-name-helper-text"
+          />
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor="email">Email address</FormLabel>
+          <Input
+            type="email"
+            id="email"
+            ref={emailRef}
+            aria-describedby="email-helper-text"
+          />
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor="email">Telephone #</FormLabel>
+          <Input
+            type="tel"
+            id="telephone"
+            ref={telephoneRef}
+            aria-describedby="tel-helper-text"
+          />
+        </FormControl>
+        <FormControl
+          isInvalid={
+            messageRef.current
+              ? messageRef.current.textLength > messageRef.current.maxLength
+              : false
+          }
+        >
+          <FormLabel htmlFor="message">Message</FormLabel>
+          <Textarea
+            id="message"
+            ref={messageRef}
+            aria-describedby="message-helper-text"
+          />
+          <FormHelperText>
+            {message.length
+              ? `${message.length}/${messageRef.current?.maxLength}`
+              : ""}
+          </FormHelperText>
+        </FormControl>
+        <Button
+          mt={2}
+          onClick={() => {
+            if (
+              messageRef.current &&
+              firstNameRef.current &&
+              lastNameRef.current &&
+              emailRef.current &&
+              telephoneRef.current
+            ) {
+              let newForm = {
+                "First Name": firstNameRef.current.value,
+                "Last Name": lastNameRef.current.value,
+                "Email Address": emailRef.current.value,
+                "Phone #": telephoneRef.current.value,
+                Message: messageRef.current.value,
+              };
+              submitContactForm(newForm).then((res) => {
+                switch (res.status) {
+                  case 200:
+                    setFormSubmitted(true);
+                    break;
+                  default:
+                    console.log(res);
+                    window.alert(res);
+                    break;
+                }
+              });
+            } else {
+              window.alert("Please fill out all fields");
+            }
+          }}
+        >
+          Submit
+        </Button>
+      </VStack>
+    </Box>
+  ) : (
+    <Text>
+      Thank you for your submission! We will get back to you as soon as
+      possible.
+    </Text>
+  );
+};

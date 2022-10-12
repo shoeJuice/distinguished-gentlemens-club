@@ -2,9 +2,9 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
 import {ContactForm} from '../ContactForm';
-import { FormMethods } from '../utils';
+import * as FormMethods from '../functions';
 
-const mockHandleSubmit = jest.spyOn()
+const mockSubmitContactForm = jest.spyOn(FormMethods, 'submitContactForm');
 
 describe('Contact Form', () => {
     it('renders properly', () => {
@@ -15,8 +15,8 @@ describe('Contact Form', () => {
     it('handles form submission', () => {
         render(<ContactForm />);
         expect(screen.getByText('Submit')).toBeInTheDocument();
-        expect(FormMethods.handleSubmit).toHaveBeenCalledTimes(1);
-        expect(FormMethods.handleSubmit).toHaveBeenCalledWith({
+        expect(mockSubmitContactForm).toHaveBeenCalledTimes(1);
+        expect(mockSubmitContactForm).toHaveBeenCalledWith({
             "First Name": 'Foo',
             "Last Name": 'Bar',
             "Email Address": 'Baz',

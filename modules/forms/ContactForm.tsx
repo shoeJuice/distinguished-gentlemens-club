@@ -23,7 +23,6 @@ import { submitContactForm } from "./functions";
 export const ContactForm = ({ onSubmit }: any) => {
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-  const [hasText, setHasText] = useState<boolean>(false);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const firstNameRef = useRef<HTMLInputElement>(null);
@@ -103,6 +102,7 @@ export const ContactForm = ({ onSubmit }: any) => {
         <Button
           mt={2}
           onClick={() => {
+            //This can be abstracted into a separate function for readability.
             if (
               messageRef.current &&
               firstNameRef.current &&

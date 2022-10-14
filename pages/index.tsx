@@ -19,7 +19,7 @@ import { NewsArticle } from "../modules/widgets/NewsArticle";
 const Home: NextPage = () => {
   const router = useRouter();
   return (
-    <div>
+    <div style={{height: "100%"}}>
       <Head>
         <title>Home - Distinguished Gentlemen of Fairfield University</title>
         <meta
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box as="main">
+      <Box as="main" height="100%">
         <Flex
           id="splashSection"
           as="section"
@@ -37,9 +37,16 @@ const Home: NextPage = () => {
           alignItems="center"
           justifyContent="center"
           flexDirection="column"
+          backgroundImage="linear-gradient(rgba(0,0,0,0.2),  rgba(23,23,35,1)), url('./images/dg_splash.jpg')"
+          backgroundRepeat="no-repeat"
+          backgroundSize={["cover", "cover"]}
+          backgroundPosition="center"
         >
-          <Text fontSize="5xl" padding={10}>
-            Splash Content Goes Here
+          <Text fontSize={["3xl", "5xl"]} fontWeight="semibold">
+            Distinguished Gentlemen 
+          </Text>
+          <Text fontSize={["lg", "2xl"]} textAlign="center" fontWeight="thin" padding={5}>
+            Establishing a communion of men committed to unity, discipline, and justice.
           </Text>
           <Button
             size="lg"
@@ -52,14 +59,17 @@ const Home: NextPage = () => {
           </Button>
         </Flex>
         <Grid
+          padding={2}
           templateAreas={[`"events events" "guest guest"
+                              "news news" "book book"`, `"events events" "guest guest"
+                              "news news" "book book"`, `"events events" "guest guest"
                               "news news" "book book"`,  `"guest book"
                               "news events"`,]}
           width="90%"
           margin="auto"
           gap={["2", "3"]}
-          gridTemplateRows={['', 'min-content min-content']}
-          gridTemplateColumns={'auto-fit .5fr'}
+          gridTemplateRows={['auto auto', 'auto minmax(0, 1fr)']}
+          gridTemplateColumns={'auto auto'}
         >
           <FeaturedGuest />
           <UpcomingEvents />

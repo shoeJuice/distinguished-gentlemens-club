@@ -1,4 +1,5 @@
-import { Container, Box, Flex } from "@chakra-ui/react";
+import React, { useState, useEffect } from 'react';
+import { Container, Box, Flex, ResponsiveValue } from "@chakra-ui/react";
 import { Navbar } from "../nav/Navbar";
 import { Footer } from "./Footer";
 
@@ -8,8 +9,9 @@ import { Footer } from "./Footer";
  * @returns
  */
 export const MainLayout = ({ children }: any) => {
+
   return (
-    <Box minHeight="100vh" backgroundColor="gray.900" width="100%">
+    <Box minHeight="100%" backgroundColor="gray.900" width="100%" overflowY="hidden">
       <Navbar />
       <Container height="100%" maxW="100%" color="white" p={0}>
         {children}

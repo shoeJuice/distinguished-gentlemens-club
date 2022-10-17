@@ -8,6 +8,7 @@ export const WindowProvider = ({ children }: any) => {
 
     useEffect(() => {
         window.document.body.style.overflowY = scroll;
+        window.document.body.style.touchAction = "none";
     }, [scroll]);
 
     return <WindowContext.Provider value={{scroll, setScroll}}>

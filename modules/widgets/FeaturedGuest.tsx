@@ -10,6 +10,7 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 
+
 /**
  * Render a Featured Guest component
  */
@@ -22,13 +23,12 @@ export const FeaturedGuest = () => {
   useEffect(() => {
     guestResponse.current = axios
       .get("/api/authors", { baseURL: process.env.BASE_URL })
-      .then((res) => setGuest(res.data[0]))
+      .then((res) => {console.log(res)})
+      .catch((err) => console.log(err))
       .finally(() => {
         setLoading(false);
-        console.log(guestResponse.current);
-        console.log(guest)
       });
-  }, []);
+  }, [guestResponse.current]);
 
   return (
     <GridItem area={"guest"}>
@@ -60,7 +60,7 @@ export const FeaturedGuest = () => {
               {/* TODO: Refactor Text Content into a component */}
               <Box maxWidth="100%" padding={2}>
                 <Text fontSize="3xl" paddingY={3} textAlign="left">
-                  {guest.Author}
+                  {guest ? guest.Author : "John Doe"}
                 </Text>
                 <Text paddingY={2} lineHeight="7">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.

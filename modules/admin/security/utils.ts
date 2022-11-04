@@ -11,13 +11,20 @@ import {
 import { firestore } from "../../../config/firebaseConfig";
 import requestIp from "request-ip";
 import { NextApiRequest, NextApiResponse } from "next";
+import { v4 as uuidv4 } from "uuid";
+
 /**
  * Add identifier to list of limited users
  * @param req
  * @param res
  */
 async function trackRequest(req: NextApiRequest) {
-  const id = req.cookies.Authentication?.split(" ")[1];
+
+  if(!req.cookies.Authentication){
+    req.cookies.Authentication = `bearer ${uuidv4()}`;
+  }
+
+  const id = req.cookies.Authentication.split(" ")[1];
   const data = {
     id,
     ip: requestIp.getClientIp(req),

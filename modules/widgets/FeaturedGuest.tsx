@@ -10,7 +10,6 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 
-
 /**
  * Render a Featured Guest component
  */
@@ -23,7 +22,9 @@ export const FeaturedGuest = () => {
   useEffect(() => {
     guestResponse.current = axios
       .get("/api/authors", { baseURL: process.env.BASE_URL })
-      .then((res) => {console.log(res)})
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => console.log(err))
       .finally(() => {
         setLoading(false);
@@ -31,18 +32,23 @@ export const FeaturedGuest = () => {
   }, [guestResponse.current]);
 
   return (
-    <GridItem area={"guest"}>
+    <GridItem rowSpan={1} colSpan={2}>
+      <Text fontSize="3xl" py={3}>Featured Guest</Text>
       <Box
-        
         id="featuredGuest"
         backgroundColor="gray.500"
         color="white"
-        padding={5}
         borderRadius={8}
+        
       >
-        <Text fontSize="4xl" textAlign={["center", "left"]} paddingY={2}>
-          Featured Guest
-        </Text>
+        <Image
+          margin="auto"   
+          fit="cover"
+          height="20%"
+          width="full"
+          objectPosition="80% 20%"
+          src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        />
         {!loading ? (
           <Flex
             flexDirection="column"
@@ -51,15 +57,9 @@ export const FeaturedGuest = () => {
             margin="auto"
           >
             <Flex alignItems="center" flexDirection={["column", "row"]}>
-              <Image
-                borderRadius={6}
-                height={["70%", "40%"]}
-                width={["70%", "40%"]}
-                src="./images/John.png"
-              />
               {/* TODO: Refactor Text Content into a component */}
               <Box maxWidth="100%" padding={2}>
-                <Text fontSize="3xl" paddingY={3} textAlign="left">
+                <Text fontSize="3xl" paddingY={3} textAlign="center">
                   {guest ? guest.Author : "John Doe"}
                 </Text>
                 <Text paddingY={2} lineHeight="7">
@@ -70,7 +70,7 @@ export const FeaturedGuest = () => {
                   amet consectetur adipisicing elit. Atque, nobis modi!
                   Voluptates nobis minus tenetur odit!
                 </Text>
-               
+
                 {/* This button should open a modal with more info */}
               </Box>
             </Flex>

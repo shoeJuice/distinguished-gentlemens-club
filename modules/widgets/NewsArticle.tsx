@@ -14,7 +14,7 @@ import {
  */
 export const NewsArticle = () => {
   return (
-    <GridItem area={"news"}>
+    <GridItem rowStart={[3]} rowSpan={[1, 3]} colSpan={[2,2]}>
       <Box
         borderRadius={8}
         padding={10}

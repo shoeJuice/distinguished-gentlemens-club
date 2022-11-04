@@ -6,6 +6,8 @@ import {
   Button,
   VStack,
   GridItem,
+  HStack,
+  ButtonGroup
 } from "@chakra-ui/react";
 
 /**
@@ -13,13 +15,17 @@ import {
  */
 export const UpcomingEvents = () => {
   return (
-    <GridItem area={'events'}>
+    <GridItem rowStart={[2, 2]} colStart={[1, 3]} colSpan={[2, 2]}>
+      <Text fontSize="3xl">Upcoming Events</Text>
       <Box
         borderRadius={8}
-        padding={10}
-        backgroundColor="red.400"
+        padding={6}
+        backgroundColor="red.700"
       >
-        <Text fontSize="4xl">Upcoming Events</Text>
+        <HStack><ButtonGroup>
+            <Button>Incoming</Button>
+            <Button>Outgoing</Button>
+          </ButtonGroup></HStack>
         <Flex
           alignItems="flex-start"
           flexDirection="column"

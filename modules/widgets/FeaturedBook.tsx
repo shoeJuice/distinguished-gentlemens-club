@@ -15,9 +15,9 @@ import {
 
 export const FeaturedBook = () => {
   return (
-    <GridItem area={'book'}>
+    <GridItem rowStart={[4, 1]} colStart={[1, 3]} colEnd={[3, 5]}>
+      <Text fontSize="3xl" py={3}>Featured Book</Text>
       <Box
-        
         id="featuredGuest"
         backgroundColor="gray.600"
         color="white"

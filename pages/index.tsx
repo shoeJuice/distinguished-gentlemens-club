@@ -19,7 +19,7 @@ import { NewsArticle } from "../modules/widgets/NewsArticle";
 const Home: NextPage = () => {
   const router = useRouter();
   return (
-    <div style={{height: "100%"}}>
+    <div>
       <Head>
         <title>Home - Distinguished Gentlemen of Fairfield University</title>
         <meta
@@ -60,16 +60,12 @@ const Home: NextPage = () => {
         </Flex>
         <Grid
           padding={2}
-          templateAreas={[`"events events" "guest guest"
-                              "news news" "book book"`, `"events events" "guest guest"
-                              "news news" "book book"`, `"events events" "guest guest"
-                              "news news" "book book"`,  `"guest book"
-                              "news events"`,]}
+          gap={10}
           width="90%"
+          height="50%"
           margin="auto"
-          gap={["2", "3"]}
-          gridTemplateRows={['auto auto', 'auto minmax(0, 1fr)']}
-          gridTemplateColumns={'auto auto'}
+          templateColumns={["repeat(1, minmax(min-content, max-content))", "repeat(5, auto)"]}
+          templateRows={["repeat(2, minmax(min-content, max-content))", "repeat(4, auto)"]}
         >
           <FeaturedGuest />
           <UpcomingEvents />

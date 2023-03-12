@@ -1,9 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import Cors from 'cors';
-import { addDoc, query, collection, serverTimestamp, FieldValue } from "firebase/firestore";
+import Cors from "cors";
+import {
+  addDoc,
+  query,
+  collection,
+  serverTimestamp,
+  FieldValue,
+} from "firebase/firestore";
 import { firestore } from "../../config/firebaseConfig";
-
 
 type ContactData = {
   "First Name": string;
@@ -15,27 +20,30 @@ type ContactData = {
 };
 
 const cors = Cors({
-  methods: ['POST'],
-  origin: 'http://localhost:3000'
-})
+  methods: ["POST"],
+  origin: "http://localhost:3000",
+});
 
-function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: Function){
+function runMiddleware(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  fn: Function
+) {
   return new Promise((resolve, reject) => {
     fn(req, res, (result: any) => {
-      if(result instanceof Error){
-        return reject(result)
+      if (result instanceof Error) {
+        return reject(result);
       }
-      console.log("Running")
-      return resolve(result)
-    })
-  })
+      console.log("Running");
+      return resolve(result);
+    });
+  });
 }
 
 export default async function fetchAllContacts(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-
   await runMiddleware(req, res, cors);
   const contact_list = collection(firestore, "contact_list");
   const { method } = req;
@@ -54,16 +62,18 @@ export default async function fetchAllContacts(
 
   switch (method) {
     case "POST":
-      postDocument(req.body)
+      await postDocument(req.body)
         .then(() => {
-          res.status(200).json({ message: "success" });
+          return res.status(200).end(JSON.stringify({ message: "success" }));
         })
         .catch((e) => {
-          res.status(500).json({ message: `error: ${e}` });
+          return res
+            .status(500)
+            .end(JSON.stringify({ message: `error: ${e}` }));
         });
       break;
     default:
       res.setHeader("Allow", ["POST"]);
-      res.status(405).end(`Method ${method} Not Allowed`);
+      return res.status(405).end(`Method ${method} Not Allowed`);
   }
 }

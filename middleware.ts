@@ -16,5 +16,5 @@ export default function assignCookie(req: NextRequest, res: NextResponse) {
 }
 
 export const config = {
-  matcher: ["/((?!api|static|images|favicon.ico).*)"],
+  matcher: ["/((?!api).*)"],
 };

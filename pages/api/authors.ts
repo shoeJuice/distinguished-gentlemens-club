@@ -27,6 +27,7 @@ const limiter = rateLimit({
   keyGenerator: (req, res) => {
     let cookie = req.cookies["Authentication"];
     const token = cookie?.split(" ")[1];
+    console.log("Here");
     console.log("Token", token);
     return token;
   },
@@ -48,7 +49,7 @@ const limiter = rateLimit({
 const slowdown = slowDown({
   windowMs: 60 * 1000,
   delayAfter: Math.round(10 / 2),
-  delayMs: 1000,
+  delayMs: 10,
 });
 
 function applyMiddleware(
@@ -72,7 +73,7 @@ export default async function fetchAllAuthors(
   res: NextApiResponse<any>
 ) {
   await rejectRequest(req, res);
-  const middlewares = [cors, limiter, slowdown];
+  const middlewares = [cors, limiter];
   await Promise.all(
     middlewares.map((middleware) => applyMiddleware(req, res, middleware))
   );

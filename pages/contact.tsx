@@ -13,6 +13,11 @@ const Contact: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
+        <Text fontSize="4xl" fontWeight="medium">Contact Us!</Text>
+        <Text>
+          We&apos;d be happy to hear from you. Feel free to send a message via the
+          Contact Form below and we&apos;ll get back to you as soon as we can!
+        </Text>
         <ContactForm />
       </Container>
     </Box>

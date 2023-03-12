@@ -8,6 +8,7 @@ import {
   HStack,
   GridItem,
 } from "@chakra-ui/react";
+import Section from "../layout/Section";
 
 /**
  * Render a Featured Guest component
@@ -15,18 +16,16 @@ import {
 
 export const FeaturedBook = () => {
   return (
-    <GridItem rowStart={[4, 1]} colStart={[1, 3]} colEnd={[3, 5]}>
-      <Text fontSize="3xl" py={3}>Featured Book</Text>
+    <Box maxWidth="350px">
+      <Text fontWeight="medium" fontSize="4xl" py={3}>
+        Featured Book
+      </Text>
       <Box
         id="featuredGuest"
         backgroundColor="gray.600"
         color="white"
-        padding={5}
         borderRadius={8}
       >
-        <Text fontSize="4xl" paddingY={2}>
-          Book of the Week
-        </Text>
         <Flex
           width="100%"
           flexDirection="column"
@@ -35,9 +34,10 @@ export const FeaturedBook = () => {
         >
           <Flex alignItems="center" flexDirection={"column"}>
             <Image
-              borderRadius={6}
-              height={["70%", "40%"]}
-              width={["70%", "40%"]}
+              fit="contain"
+              borderTopRadius={6}
+              height="20%"
+              width="100%"
               src="./images/Book_Cover_Mockup.jpg"
             />
             {/* TODO: Refactor Text Content into a component */}
@@ -55,11 +55,13 @@ export const FeaturedBook = () => {
                 nobis minus tenetur odit!
               </Text>
               {/* This button should open a modal with more info */}
-              <Button colorScheme="whiteAlpha" color="white">Purchase on Amazon</Button>
+              <Button colorScheme="whiteAlpha" color="white">
+                Purchase on Amazon
+              </Button>
             </Box>
           </Flex>
         </Flex>
       </Box>
-    </GridItem>
+    </Box>
   );
 };

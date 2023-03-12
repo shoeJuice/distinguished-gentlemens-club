@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 export const NavLink = ({ to }: any) => {
   return (
     <NextLink href={to.toLowerCase() === "home" ? "./" : `/${to.toLowerCase()}`} passHref>
-      <Button variant="unstyled">{to}</Button>
+      <Button fontSize="lg" variant="unstyled">{to}</Button>
     </NextLink>
   );
 };

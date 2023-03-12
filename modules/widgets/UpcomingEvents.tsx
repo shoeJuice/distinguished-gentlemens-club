@@ -7,41 +7,65 @@ import {
   VStack,
   GridItem,
   HStack,
-  ButtonGroup
+  ButtonGroup,
 } from "@chakra-ui/react";
+import Card from "../layout/Card";
+import Section from "../layout/Section";
 
 /**
  * Render an Upcoming Events component
  */
 export const UpcomingEvents = () => {
   return (
-    <GridItem rowStart={[2, 2]} colStart={[1, 3]} colSpan={[2, 2]}>
-      <Text fontSize="3xl">Upcoming Events</Text>
-      <Box
-        borderRadius={8}
-        padding={6}
-        backgroundColor="red.700"
-      >
-        <HStack><ButtonGroup>
-            <Button>Incoming</Button>
-            <Button>Outgoing</Button>
-          </ButtonGroup></HStack>
-        <Flex
-          alignItems="flex-start"
-          flexDirection="column"
-          justifyContent="flex-start"
-        >
-          <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
-            Event Goes Here
-          </Button>
-          <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
-            Event Goes Here
-          </Button>
-          <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
-            Event Goes Here
-          </Button>
-        </Flex>
+    <Section alignItems="center" flexDirection={["column"]}>
+      <Box>
+        <Text fontSize="3xl">Get Involved</Text>
+        <Text maxWidth="745px">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Exercitationem animi corporis culpa non temporibus, adipisci eum a
+          molestiae harum excepturi fugit sit obcaecati, ipsum esse vel quis
+          optio aut? Fuga.
+        </Text>
+        <Text maxWidth="745px">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae officia nostrum, iure deserunt placeat assumenda consectetur dolor nihil cumque voluptas id dolorum odit provident aut quia cum harum, libero molestias?em
+        </Text>
       </Box>
-    </GridItem>
+      <Flex
+        alignItems="center"
+        width="100%"
+        gap={16}
+        justifyContent="space-evenly"
+        flexDirection={["column", "row"]}
+      >
+        <Box width={["100%", "50%"]}>
+          <Text fontWeight="medium" fontSize="4xl" paddingY={2}>
+            This Week at DGFU
+          </Text>
+          <Card />
+        </Box>
+        <Box width={["100%","50%"]}>
+          <Text fontWeight="medium" fontSize="4xl" paddingY={2}>
+            Upcoming Events
+          </Text>
+          <Box borderRadius={8} padding={6} backgroundColor="red.700">
+            <Flex
+              alignItems="flex-start"
+              flexDirection="column"
+              justifyContent="flex-start"
+            >
+              <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
+                Event Goes Here
+              </Button>
+              <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
+                Event Goes Here
+              </Button>
+              <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
+                Event Goes Here
+              </Button>
+            </Flex>
+          </Box>
+        </Box>
+      </Flex>
+    </Section>
   );
 };

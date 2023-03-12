@@ -9,6 +9,9 @@ import {
   Button,
   GridItem,
 } from "@chakra-ui/react";
+import Section from "../layout/Section";
+import Card from "../layout/Card";
+import { FeaturedBook } from "./FeaturedBook";
 
 /**
  * Render a Featured Guest component
@@ -29,56 +32,34 @@ export const FeaturedGuest = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [guestResponse.current]);
+  }, []);
 
   return (
-    <GridItem rowSpan={1} colSpan={2}>
-      <Text fontSize="3xl" py={3}>Featured Guest</Text>
-      <Box
-        id="featuredGuest"
-        backgroundColor="gray.500"
-        color="white"
-        borderRadius={8}
-        
-      >
-        <Image
-          margin="auto"   
-          fit="cover"
-          height="20%"
-          width="full"
-          objectPosition="80% 20%"
-          src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        />
-        {!loading ? (
-          <Flex
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            margin="auto"
-          >
-            <Flex alignItems="center" flexDirection={["column", "row"]}>
-              {/* TODO: Refactor Text Content into a component */}
-              <Box maxWidth="100%" padding={2}>
-                <Text fontSize="3xl" paddingY={3} textAlign="center">
-                  {guest ? guest.Author : "John Doe"}
-                </Text>
-                <Text paddingY={2} lineHeight="7">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Officiis totam laudantium modi minima sequi quae possimus.
-                  Animi veritatis quis asperiores molestias, nisi eos aspernatur
-                  dolor unde, fuga, eum laborum alias? Lorem, ipsum dolor sit
-                  amet consectetur adipisicing elit. Atque, nobis modi!
-                  Voluptates nobis minus tenetur odit!
-                </Text>
-
-                {/* This button should open a modal with more info */}
-              </Box>
-            </Flex>
-          </Flex>
-        ) : (
-          <Text>Loading...</Text>
-        )}
+    <Section alignItems="center" flexDirection={["column"]}>
+      <Box>
+        <Text fontSize="3xl">Welcome to DGFU</Text>
+        <Text maxWidth="745px">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Exercitationem animi corporis culpa non temporibus, adipisci eum a
+          molestiae harum excepturi fugit sit obcaecati, ipsum esse vel quis
+          optio aut? Fuga.
+        </Text>
+        <Text maxWidth="745px">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae
+          officia nostrum, iure deserunt placeat assumenda consectetur dolor
+          nihil cumque voluptas id dolorum odit provident aut quia cum harum,
+          libero molestias?em
+        </Text>
       </Box>
-    </GridItem>
+      <Flex alignItems="center" width="100%" gap={16} justifyContent="space-evenly" flexDirection={["column", "row"]}>
+        <Box>
+          <Text fontSize="4xl" fontWeight="medium" py={3}>
+            Featured Guest
+          </Text>
+          <Card />
+        </Box>
+        <FeaturedBook />
+      </Flex>
+    </Section>
   );
 };

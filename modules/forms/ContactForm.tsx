@@ -10,7 +10,7 @@ import {
   Textarea,
   Text,
   Button,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
 import { submitContactForm } from "./functions";
 
@@ -30,6 +30,39 @@ export const ContactForm = ({ onSubmit }: any) => {
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const telephoneRef = useRef<HTMLInputElement>(null);
 
+  const processFields = () => {
+    //This can be abstracted into a separate function for readability.
+    console.log(message);
+    if (
+      messageRef.current &&
+      firstNameRef.current &&
+      lastNameRef.current &&
+      emailRef.current &&
+      telephoneRef.current
+    ) {
+      let newForm = {
+        "First Name": firstNameRef.current.value,
+        "Last Name": lastNameRef.current.value,
+        "Email Address": emailRef.current.value,
+        "Phone #": telephoneRef.current.value,
+        Message: messageRef.current.value,
+      };
+      submitContactForm(newForm).then((res) => {
+        switch (res.status) {
+          case 200:
+            setFormSubmitted(true);
+            break;
+          default:
+            console.log(res);
+            window.alert(res);
+            break;
+        }
+      });
+    } else {
+      window.alert("Please fill out all fields");
+    }
+  };
+
   useEffect(() => {
     if (messageRef.current) {
       messageRef.current.maxLength = 500;
@@ -42,7 +75,7 @@ export const ContactForm = ({ onSubmit }: any) => {
   }, []);
 
   return !formSubmitted ? (
-    <Box paddingY={8}>
+    <Box mt={8} padding={8} borderRadius={8} backgroundColor="gray.600">
       <VStack alignItems="flex-start">
         <FormControl>
           <FormLabel htmlFor="email">First Name</FormLabel>
@@ -63,7 +96,7 @@ export const ContactForm = ({ onSubmit }: any) => {
           />
         </FormControl>
         <FormControl>
-          <FormLabel htmlFor="email">Email address</FormLabel>
+          <FormLabel htmlFor="email">Email Address</FormLabel>
           <Input
             type="email"
             id="email"
@@ -101,37 +134,7 @@ export const ContactForm = ({ onSubmit }: any) => {
         </FormControl>
         <Button
           mt={2}
-          onClick={() => {
-            //This can be abstracted into a separate function for readability.
-            if (
-              messageRef.current &&
-              firstNameRef.current &&
-              lastNameRef.current &&
-              emailRef.current &&
-              telephoneRef.current
-            ) {
-              let newForm = {
-                "First Name": firstNameRef.current.value,
-                "Last Name": lastNameRef.current.value,
-                "Email Address": emailRef.current.value,
-                "Phone #": telephoneRef.current.value,
-                Message: messageRef.current.value,
-              };
-              submitContactForm(newForm).then((res) => {
-                switch (res.status) {
-                  case 200:
-                    setFormSubmitted(true);
-                    break;
-                  default:
-                    console.log(res);
-                    window.alert(res);
-                    break;
-                }
-              });
-            } else {
-              window.alert("Please fill out all fields");
-            }
-          }}
+          onClick={() => processFields()}
         >
           Submit
         </Button>

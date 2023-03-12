@@ -8,20 +8,21 @@ import {
   GridItem,
   Image,
 } from "@chakra-ui/react";
+import Section from "../layout/Section";
 
 /**
  * Render a News Article component
  */
 export const NewsArticle = () => {
   return (
-    <GridItem rowStart={[3]} rowSpan={[1, 3]} colSpan={[2,2]}>
+    <Box>
+      <Text fontSize="3xl" paddingY={2}>News Article</Text>
       <Box
         borderRadius={8}
         padding={10}
         color="black"
         backgroundColor="whiteAlpha.900"
       >
-        <Text fontSize="4xl">News Article</Text>
         <Flex
           alignItems="flex-start"
           flexDirection={"column"}
@@ -57,6 +58,6 @@ export const NewsArticle = () => {
           </Box>
         </Flex>
       </Box>
-    </GridItem>
+    </Box>
   );
 };

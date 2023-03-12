@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import NextLink from "next/link";
-import { Box, Flex, Link, Button, HStack, VStack, Text } from "@chakra-ui/react";
+import { Box, Flex, Link, Button, HStack, VStack, Text, IconButton } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { Logo } from "./Logo";
 import { NavLink } from "./NavLink";
 import { WindowContext } from "../context/WindowContext";
@@ -27,29 +28,30 @@ export const Navbar = (props: any) => {
       width="100%"
       data-testid="navbar"
       color="white"
-      backgroundColor="blackAlpha.200"
+      position="relative"
     >
-      <Flex width="100%" justifyContent="space-between" padding={4}>
+      {/*TODO: Turn the bottom component into a mobile only component, abstract it into its own file */}
+      <Flex width="100%" position="relative" justifyContent="space-between" padding={4}>
         <Logo />
         <HStack display={["none", "flex"]}>
           <NavLink to="Home" />
           <NavLink to="About" />
           <NavLink to="Contact" />
         </HStack>
-        <Button
+        <IconButton
           display={["block", "none"]}
           onClick={() => {
             setIsOpen(!isOpen);
             setScroll("hidden");
           }}
           opacity={isOpen ? 0 : 1}
-        >
-          HBurger
-        </Button>
+          aria-label="Toggle Menu"
+          icon={<HamburgerIcon />}
+         />
       </Flex>
       <Box
         position="fixed"
-        backgroundColor="blackAlpha.600"
+        backgroundColor="blackAlpha.800"
         height="100vh"
         width="100%"
         zIndex={10}
@@ -61,7 +63,7 @@ export const Navbar = (props: any) => {
         padding={4}
       >
         <Flex alignItems="center" width="100%" justifyContent="space-between" padding={2}>
-          <Button
+          <IconButton
             onClick={() => {
               setIsOpen(!isOpen);
               setScroll("auto");
@@ -69,9 +71,9 @@ export const Navbar = (props: any) => {
             position="absolute"
             right={7}
             top={4}
-          >
-            Close
-          </Button>
+            aria-label="Toggle Menu"
+            icon={<HamburgerIcon />}
+           />
           <Text margin="auto">Icon</Text>
         </Flex>
         <VStack>

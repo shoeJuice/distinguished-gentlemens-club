@@ -24,15 +24,16 @@ const cors = Cors({
 });
 
 const limiter = rateLimit({
-  keyGenerator: (req, res) => {
+  keyGenerator: (req: any, res: any) => {
     let cookie = req.cookies["Authentication"];
     const token = cookie?.split(" ")[1];
+    console.log("Here");
     console.log("Token", token);
     return token;
   },
   windowMs: 60 * 1000, // 1 minute
   max: 10, // limit each IP to 10 requests per windowMs
-  handler: async (req: any, res, options: any) => {
+  handler: async (req: any, res: any, options: any) => {
     await trackRequest(req)
       .catch((err) => console.log(err))
       .then(() => {
@@ -48,7 +49,7 @@ const limiter = rateLimit({
 const slowdown = slowDown({
   windowMs: 60 * 1000,
   delayAfter: Math.round(10 / 2),
-  delayMs: 1000,
+  delayMs: 10,
 });
 
 function applyMiddleware(
@@ -72,7 +73,7 @@ export default async function fetchAllAuthors(
   res: NextApiResponse<any>
 ) {
   await rejectRequest(req, res);
-  const middlewares = [cors, limiter, slowdown];
+  const middlewares = [cors, limiter];
   await Promise.all(
     middlewares.map((middleware) => applyMiddleware(req, res, middleware))
   );

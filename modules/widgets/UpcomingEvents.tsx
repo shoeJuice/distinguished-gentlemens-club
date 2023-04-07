@@ -17,8 +17,8 @@ import Section from "../layout/Section";
  */
 export const UpcomingEvents = () => {
   return (
-    <Section alignItems="center" flexDirection={["column"]}>
-      <Box>
+    <Section alignItems="center" containerSize="container.xl" flexDirection={["column"]} backgroundColor="whiteAlpha.300">
+      <Flex flexDirection="column" alignItems="center" gap={4}>
         <Text fontSize="3xl">Get Involved</Text>
         <Text maxWidth="745px">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -27,45 +27,54 @@ export const UpcomingEvents = () => {
           optio aut? Fuga.
         </Text>
         <Text maxWidth="745px">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae officia nostrum, iure deserunt placeat assumenda consectetur dolor nihil cumque voluptas id dolorum odit provident aut quia cum harum, libero molestias?em
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae
+          officia nostrum, iure deserunt placeat assumenda consectetur dolor
+          nihil cumque voluptas id dolorum odit provident aut quia cum harum,
+          libero molestias?
         </Text>
-      </Box>
+      </Flex>
       <Flex
         alignItems="center"
         width="100%"
-        gap={16}
+        gap={4}
         justifyContent="space-evenly"
         flexDirection={["column", "row"]}
       >
-        <Box width={["100%", "50%"]}>
+        <Box >
           <Text fontWeight="medium" fontSize="4xl" paddingY={2}>
             This Week at DGFU
           </Text>
           <Card />
         </Box>
-        <Box width={["100%","50%"]}>
-          <Text fontWeight="medium" fontSize="4xl" paddingY={2}>
-            Upcoming Events
-          </Text>
-          <Box borderRadius={8} padding={6} backgroundColor="red.700">
-            <Flex
-              alignItems="flex-start"
-              flexDirection="column"
-              justifyContent="flex-start"
-            >
-              <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
-                Event Goes Here
-              </Button>
-              <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
-                Event Goes Here
-              </Button>
-              <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
-                Event Goes Here
-              </Button>
-            </Flex>
-          </Box>
-        </Box>
+        {renderUpcomingEvents()}
       </Flex>
     </Section>
   );
 };
+
+function renderUpcomingEvents() {
+  return (
+    <Box width="450px">
+      <Text fontWeight="medium" fontSize="4xl" paddingY={2}>
+        Upcoming Events
+      </Text>
+      <Box borderRadius={8}  padding={6} backgroundColor="red.700">
+        <Flex
+          alignItems="flex-start"
+          flexDirection="column"
+          justifyContent="flex-start"
+        >
+          <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
+            Event Goes Here
+          </Button>
+          <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
+            Event Goes Here
+          </Button>
+          <Button _hover={{ color: "whiteAlpha.700" }} variant="unstyled">
+            Event Goes Here
+          </Button>
+        </Flex>
+      </Box>
+    </Box>
+  );
+}

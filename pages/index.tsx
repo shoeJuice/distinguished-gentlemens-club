@@ -9,6 +9,9 @@ import {
   Flex,
   Image,
   Grid,
+  HStack,
+  Center,
+  VStack,
 } from "@chakra-ui/react";
 
 import { FeaturedGuest } from "../modules/widgets/FeaturedGuest";
@@ -42,29 +45,33 @@ const Home: NextPage = () => {
         backgroundRepeat="no-repeat"
         backgroundSize="cover"
         backgroundPosition="top"
+        containerSize="container.xl"
       >
-        <Text fontSize={["xl", "5xl"]} fontWeight="semibold">
-          Distinguished Gentlemen
-        </Text>
-        <Text
-          fontSize={["lg", "2xl"]}
-          textAlign="center"
-          fontWeight="thin"
-          padding={5}
-        >
-          Establishing a communion of men and women committed to unity, discipline, and
-          justice.
-        </Text>
-        <Button
-          size="lg"
-          onClick={() => {
-            router.push("/about");
-          }}
-          colorScheme="red"
-        >
-          Learn More
-        </Button>
+        <VStack>
+          <Text fontSize={["xl", "5xl"]} fontWeight="semibold">
+            Distinguished Gentlemen
+          </Text>
+          <Text
+            fontSize={["lg", "2xl"]}
+            textAlign="center"
+            fontWeight="thin"
+            padding={5}
+          >
+            Establishing a communion of men and women committed to unity,
+            discipline, and justice.
+          </Text>
+          <Button
+            size="lg"
+            onClick={() => {
+              router.push("/about");
+            }}
+            colorScheme="red"
+          >
+            Learn More
+          </Button>
+        </VStack>
       </Section>
+
       <FeaturedGuest />
       <UpcomingEvents />
     </div>

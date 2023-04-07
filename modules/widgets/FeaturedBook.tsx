@@ -16,7 +16,7 @@ import Section from "../layout/Section";
 
 export const FeaturedBook = () => {
   return (
-    <Box maxWidth="350px">
+    <Box maxWidth="450px">
       <Text fontWeight="medium" fontSize="4xl" py={3}>
         Featured Book
       </Text>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Text } from "@chakra-ui/react";
+import { Flex, Box, Text, Container } from "@chakra-ui/react";
 
 /**
  * A general section component, used for layout purposes.
@@ -7,9 +7,18 @@ import { Flex, Box, Text } from "@chakra-ui/react";
  */
 const Section = (props: any) => {
   return (
-    <Flex as="section" gap={5} width="100%" minHeight="100vh" padding={8} marginBottom={16}  justifyContent="space-evenly" {...props}>
+    <Flex
+      as="section"
+      gap={5}
+      width="100%"
+      minHeight="100vh"
+      padding={8}
+      marginBottom={16}
+      justifyContent="space-evenly"
+      {...props}
+    >
       {props.title && <Text>{props.title}</Text>}
-      {props.children}
+      <Container maxW={props.containerSize}>{props.children}</Container>
     </Flex>
   );
 };

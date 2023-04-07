@@ -35,8 +35,8 @@ export const FeaturedGuest = () => {
   }, []);
 
   return (
-    <Section alignItems="center" flexDirection={["column"]}>
-      <Box>
+    <Section containerSize="container.xl" alignItems="center" flexDirection={["column"]}>
+      <Flex flexDirection="column" alignItems="center">
         <Text fontSize="3xl">Welcome to DGFU</Text>
         <Text maxWidth="745px">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -50,8 +50,8 @@ export const FeaturedGuest = () => {
           nihil cumque voluptas id dolorum odit provident aut quia cum harum,
           libero molestias?em
         </Text>
-      </Box>
-      <Flex alignItems="center" width="100%" gap={16} justifyContent="space-evenly" flexDirection={["column", "row"]}>
+      </Flex>
+      <Flex alignItems="center" width="100%" gap={4} justifyContent="space-evenly" flexDirection={["column", "row"]}>
         <Box>
           <Text fontSize="4xl" fontWeight="medium" py={3}>
             Featured Guest

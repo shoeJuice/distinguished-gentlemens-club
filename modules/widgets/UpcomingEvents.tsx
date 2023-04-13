@@ -17,7 +17,7 @@ import Section from "../layout/Section";
  */
 export const UpcomingEvents = () => {
   return (
-    <Section alignItems="center" containerSize="container.xl" flexDirection={["column"]} backgroundColor="whiteAlpha.300">
+    <Section alignItems="center" containerSize="container.xl" flexDirection={["column"]}>
       <Flex flexDirection="column" alignItems="center" gap={4}>
         <Text fontSize="3xl">Get Involved</Text>
         <Text maxWidth="745px">
@@ -54,7 +54,7 @@ export const UpcomingEvents = () => {
 
 function renderUpcomingEvents() {
   return (
-    <Box width="450px">
+    <Box width={["100%", "450px"]}>
       <Text fontWeight="medium" fontSize="4xl" paddingY={2}>
         Upcoming Events
       </Text>
